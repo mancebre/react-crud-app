@@ -18,7 +18,7 @@ This project is a React application developed as part of a test assessment for a
 2. **Navigate to the project directory:**
 
     ```bash
-    cd your-repo
+    cd react-crud-app
     ```
 
 3. **Install dependencies:**
