@@ -8,49 +8,48 @@ import NotificationDialog from '../components/Common/NotificationDialog';
 import NotificationSnackbar from '../components/Common/NotificationSnackbar';
 
 const Details: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
-    const {
-        post,
-        loading,
-        error,
-        successMessage,
-        updatePost,
-        deletePost,
-        handleCloseSuccessMessage,
-        dialogMessage,
-    } = usePostDetails({ id: Number(id) });
+	const { id } = useParams<{ id: string }>();
+	const {
+		post,
+		loading,
+		error,
+		successMessage,
+		updatePost,
+		deletePost,
+		handleCloseSuccessMessage,
+		dialogMessage,
+	} = usePostDetails({ id: Number(id) });
 
-    return (
-        <Container maxWidth="md">
-            <Typography variant="h2" gutterBottom>
-                Details Page
-            </Typography>
+	return (
+		<Container maxWidth='md'>
+			<Typography variant='h2' gutterBottom>
+				Details Page
+			</Typography>
 
-            {loading ? (
+			{loading ? (
 				<Loading />
-            ) : (
-                <>
-                    {post && (
-                        <PostForm post={post} onUpdate={updatePost} onDelete={deletePost} />
-                    )}
-                </>
-            )}
+			) : (
+				<>
+					{post && (
+						<PostForm post={post} onUpdate={updatePost} onDelete={deletePost} />
+					)}
+				</>
+			)}
 
-            <NotificationSnackbar
+			<NotificationSnackbar
 				open={!!successMessage || !!error}
 				onClose={handleCloseSuccessMessage}
 				message={successMessage || error}
 				success={!!successMessage}
 			/>
 
-            <NotificationDialog
-                open={!!dialogMessage}
-                onClose={handleCloseSuccessMessage}
-                message={dialogMessage}
-            />
-
-        </Container>
-    );
+			<NotificationDialog
+				open={!!dialogMessage}
+				onClose={handleCloseSuccessMessage}
+				message={dialogMessage}
+			/>
+		</Container>
+	);
 };
 
 export default Details;

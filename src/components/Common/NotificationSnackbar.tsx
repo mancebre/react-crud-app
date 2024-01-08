@@ -14,13 +14,12 @@ const NotificationSnackbar: React.FC<NotificationSnackbarProps> = ({
 	message,
 	success,
 }) => {
-  return (
+	return (
 		<Snackbar
 			open={open}
 			autoHideDuration={3000}
 			onClose={onClose}
-			anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-		>
+			anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
 			<Alert onClose={onClose} severity={success ? 'success' : 'error'}>
 				{message}
 			</Alert>

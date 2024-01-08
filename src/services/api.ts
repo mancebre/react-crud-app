@@ -12,7 +12,10 @@ export const getPostDetails = async (id: number) => {
 	return data;
 };
 
-export const createNewPost = async (itemData: { title: string; body: string }) => {
+export const createNewPost = async (itemData: {
+	title: string;
+	body: string;
+}) => {
 	const response = await fetch(`${apiUrl}/posts`, {
 		method: 'POST',
 		headers: {
@@ -25,7 +28,10 @@ export const createNewPost = async (itemData: { title: string; body: string }) =
 	return data;
 };
 
-export const updatePost = async (id: number, itemData: { title: string; body: string }) => {
+export const updatePost = async (
+	id: number,
+	itemData: { title: string; body: string },
+) => {
 	const response = await fetch(`${apiUrl}/posts/${id}`, {
 		method: 'PUT',
 		headers: {

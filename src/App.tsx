@@ -6,15 +6,15 @@ import Create from './pages/Create';
 import Details from './pages/Details';
 
 const App: React.FC = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/create" element={<Create />} />
-        <Route path="/details/:id" element={<Details />} />
-      </Routes>
-    </Router>
-  );
+	return (
+		<Router>
+			<Routes>
+				<Route path='/' element={<Home />} />
+				<Route path='/create' element={<Create />} />
+				<Route path='/details/:id' element={<Details />} />
+			</Routes>
+		</Router>
+	);
 };
 
 export default App;

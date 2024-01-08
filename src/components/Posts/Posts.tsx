@@ -12,37 +12,39 @@ interface Post {
 const Posts: React.FC = () => {
 	const [posts, setPosts] = useState<Post[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
-	useEffect(() => {
-		const fetchPosts = async () => {
-			try {
-				setLoading(true);
-				const data = await getAllPosts();
-				setPosts(data);
-			} catch (error) {
-				console.error('Error fetching posts:', error);
-			} finally {
-				setLoading(false);
-			}
-		};
 
+	const fetchPosts = async () => {
+		try {
+			setLoading(true);
+			const data = await getAllPosts();
+			setPosts(data);
+		} catch (error) {
+			console.error('Error fetching posts:', error);
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	useEffect(() => {
 		fetchPosts();
 	}, []);
 
 	return (
-		<Container maxWidth="md">
-			<Typography variant="h4" gutterBottom>
+		<Container maxWidth='md'>
+			<Typography variant='h4' gutterBottom>
 				Posts List
 			</Typography>
-			{loading ? (<Loading />) : (
+			{loading ? (
+				<Loading />
+			) : (
 				<>
 					<List>
 						{posts.map((post) => (
-						<SinglePost key={post.id} post={post} />
+							<SinglePost key={post.id} post={post} />
 						))}
 					</List>
 				</>
 			)}
-
 		</Container>
 	);
 };

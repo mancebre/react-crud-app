@@ -8,18 +8,18 @@ import NotificationSnackbar from '../components/Common/NotificationSnackbar';
 
 const Create: React.FC = () => {
 	const {
-        post,
+		post,
 		loading,
 		error,
 		successMessage,
 		dialogMessage,
 		createPost,
-		handleCloseSuccessMessage
+		handleCloseSuccessMessage,
 	} = usePostDetails({});
 
 	return (
-		<Container maxWidth="md">
-			<Typography variant="h2" gutterBottom>
+		<Container maxWidth='md'>
+			<Typography variant='h2' gutterBottom>
 				Create Page
 			</Typography>
 			{loading ? (
@@ -36,12 +36,12 @@ const Create: React.FC = () => {
 				message={successMessage || error}
 				success={!!successMessage}
 			/>
-            
-            <NotificationDialog
-                open={!!dialogMessage}
-                onClose={handleCloseSuccessMessage}
-                message={dialogMessage}
-            />
+
+			<NotificationDialog
+				open={!!dialogMessage}
+				onClose={handleCloseSuccessMessage}
+				message={dialogMessage}
+			/>
 		</Container>
 	);
 };

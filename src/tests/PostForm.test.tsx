@@ -1,5 +1,11 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
+import {
+	render,
+	screen,
+	fireEvent,
+	waitFor,
+	act,
+} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import PostForm from '../components/Posts/PostForm';
@@ -21,7 +27,7 @@ const mockPost = {
 
 const renderPostForm = (post: Post | null) => {
 	return render(
-		<PostForm post={post} onUpdate={mockOnUpdate} onDelete={mockOnDelete} />
+		<PostForm post={post} onUpdate={mockOnUpdate} onDelete={mockOnDelete} />,
 	);
 };
 
@@ -51,19 +57,23 @@ describe('PostForm', () => {
 	it('calls onUpdate when the form is submitted', async () => {
 		renderPostForm(null);
 
-		fireEvent.change(screen.getByLabelText(/Title/i), { target: { value: 'Test Title' } });
-		fireEvent.change(screen.getByLabelText(/Body/i), { target: { value: 'Test Body Content' } });
+		fireEvent.change(screen.getByLabelText(/Title/i), {
+			target: { value: 'Test Title' },
+		});
+		fireEvent.change(screen.getByLabelText(/Body/i), {
+			target: { value: 'Test Body Content' },
+		});
 
 		act(() => {
 			userEvent.click(screen.getByText('Create'));
 		});
 
 		await waitFor(() => {
-		expect(mockOnUpdate).toHaveBeenCalledWith({
-			id: 0,
-			title: 'Test Title',
-			body: 'Test Body Content',
-		});
+			expect(mockOnUpdate).toHaveBeenCalledWith({
+				id: 0,
+				title: 'Test Title',
+				body: 'Test Body Content',
+			});
 		});
 	});
 
