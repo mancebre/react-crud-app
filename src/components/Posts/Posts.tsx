@@ -13,19 +13,18 @@ const Posts: React.FC = () => {
 	const [posts, setPosts] = useState<Post[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 
-	const fetchPosts = async () => {
-		try {
-			setLoading(true);
-			const data = await getAllPosts();
-			setPosts(data);
-		} catch (error) {
-			console.error('Error fetching posts:', error);
-		} finally {
-			setLoading(false);
-		}
-	};
-
 	useEffect(() => {
+		const fetchPosts = async () => {
+			try {
+				setLoading(true);
+				const data = await getAllPosts();
+				setPosts(data);
+			} catch (error) {
+				console.error('Error fetching posts:', error);
+			} finally {
+				setLoading(false);
+			}
+		};
 		fetchPosts();
 	}, []);
 

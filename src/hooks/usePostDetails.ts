@@ -7,6 +7,8 @@ import {
 	deletePost as deletePostAPI,
 } from '../services/api';
 
+const REDIRECT_TIMEOUT = 2000;
+
 interface UsePostDetailsOptions {
 	id?: number;
 }
@@ -76,7 +78,7 @@ const usePostDetails = ({
 			);
 			setTimeout(() => {
 				navigate('/');
-			}, 2000);
+			}, REDIRECT_TIMEOUT);
 		} catch (error) {
 			handlePostError('creating', error);
 			setPost(newPost);
@@ -110,7 +112,7 @@ const usePostDetails = ({
 				);
 				setTimeout(() => {
 					navigate('/');
-				}, 2000);
+				}, REDIRECT_TIMEOUT);
 			} catch (error) {
 				handlePostError('deleting', error);
 			} finally {
